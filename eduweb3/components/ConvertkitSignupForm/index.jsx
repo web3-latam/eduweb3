@@ -1,8 +1,7 @@
-import { FormEventHandler, useCallback, useState } from 'react';
-import styles from './ConvertkitSignupForm.module.css';
+import { useCallback, useState } from "react";
 
 const ConvertkitSignupForm = ({ formId, children }) => {
-  const name = 'email';
+  const name = "email";
   const [success, setSuccess] = useState();
 
   const onSubmit = useCallback(
@@ -15,20 +14,20 @@ const ConvertkitSignupForm = ({ formId, children }) => {
 
       const body = JSON.stringify({
         formId,
-        email
+        email,
       });
 
       const headers = new Headers({
-        'Content-Type': 'application/json; charset=utf-8'
+        "Content-Type": "application/json; charset=utf-8",
       });
 
       try {
         await fetch(`/api/convertkit/subscribe`, {
-          method: 'POST',
-          mode: 'cors',
-          cache: 'no-cache',
+          method: "POST",
+          mode: "cors",
+          cache: "no-cache",
           headers,
-          body
+          body,
         });
 
         setSuccess(true);
@@ -64,11 +63,11 @@ const ConvertkitSignupForm = ({ formId, children }) => {
         />
 
         <button className="min-w-[6rem] bg-slate-500 shadow-lg px-8 py-2 rounded-3xl my-8 hover:bg-slate-200 hover:text-gray-900">
-          {children ?? 'Registrarme'}
+          {children ?? "Registrarme"}
         </button>
       </form>
 
-      <p className={'mt-2 text-center text-sm md:text-xs'}>
+      <p className={"mt-2 text-center text-sm md:text-xs"}>
         Suscribete a nuestro boletīn para recibir noticias.
       </p>
     </div>
